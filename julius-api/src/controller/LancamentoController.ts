@@ -1,11 +1,12 @@
 import { Lancamento } from "../entity/Lancamento"
 import { AppDataSource } from "../data-source"
 
-const { manager } = AppDataSource
-
 export class LancamentoController {
+    
+    private lancamentoRepositorio = AppDataSource.getRepository(Lancamento)
+
     async salvar(lancamento: Lancamento) {
-        const lancamentoSalvo = await manager.save(lancamento)
+        const lancamentoSalvo = await this.lancamentoRepositorio.save(lancamento)
         return lancamentoSalvo
     }
 }
