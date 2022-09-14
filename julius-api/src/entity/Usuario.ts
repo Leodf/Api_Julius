@@ -18,4 +18,7 @@ export class Usuario {
     @Column()
     email: string
 
+    @OneToMany(()=> Lancamento, lancamento => lancamento.usuario)
+    lancamentos: Lancamento[]
+
 }
